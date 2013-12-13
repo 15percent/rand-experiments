@@ -60,5 +60,6 @@ def rand_func_6(prob):
 		else:
 			count_list.append(count)
 			count = 0
-	bar_graph(count_list)
+	count_list1 = [count_list.count(x) for x in range(0, 100)]
+	bar_graph(count_list1)
 
