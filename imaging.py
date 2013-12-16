@@ -6,7 +6,7 @@ white = (255, 255, 255)
 black = (0, 0, 0)
 
 size = width, height = inputImage.size
-change = x, y, z = 255, 0, 0
+x, y, z = 255, 0, 0
 
 inputImage.save("output.jpg")
 outputImage = Image.open("output.jpg")
@@ -22,16 +22,16 @@ for i in range(0, height):
 			img[i,j] = white
 
 #Algorithm
-for i in range(0, height):
-	change = x, y, z = 255, 0, 0
-	for j in range(0, width):
-		if img[i,j] == black:
-			while img[i,j] == black:
-				img[i,j] = change
+for i in range(0, width):
+	x, y, z = 255, 0, 0
+	for j in range(0, height):
+		if img[j, i] == black:
+			while img[j, i] == black:
+				img[j, i] = (x, y, z)
 				j = j+1
 			if x==255: x, y = 0, 255
-			if y==255: y, z = 0, 255
-			if z==255: z, x = 0, 255
+			elif y==255: y, z = 0, 255
+			elif z==255: z, x = 0, 255
 
 
 outputImage.show()
