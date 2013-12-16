@@ -6,14 +6,13 @@ white = (255, 255, 255)
 black = (0, 0, 0)
 
 def crawl(i, j):
-	if i<0 or i>=height or j<0 or j>=width: return
+	if i<0 or i>=width or j<0 or j>=height: return
 	if img[i,j] == black:
 		img[i,j] = (x, y, z)
-	else: return
-	crawl(i+1, j)
-	crawl(i, j+1)
-	crawl(i-1, j)
-	crawl(i, j-1)
+		crawl(i+1, j)
+		crawl(i, j+1)
+		crawl(i-1, j)
+		crawl(i, j-1)
 
 size = width, height = inputImage.size
 x, y, z = 255, 0, 0
@@ -32,9 +31,9 @@ for i in range(0, height):
 			img[i,j] = white
 
 #Algorithm
-for i in range(0, height):
+for i in range(0, width):
 	x, y, z = 255, 0, 0
-	for j in range(0, width):
+	for j in range(0, height):
 		if img[i, j] == black:
 			crawl(i, j)
 
