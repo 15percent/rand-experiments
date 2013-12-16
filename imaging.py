@@ -22,13 +22,25 @@ for i in range(0, height):
 			img[i,j] = white
 
 #Algorithm
-for i in range(0, width):
+for i in range(0, height):
 	x, y, z = 255, 0, 0
-	for j in range(0, height):
-		if img[j, i] == black:
-			while img[j, i] == black:
-				img[j, i] = (x, y, z)
-				j = j+1
+	for j in range(0, width):
+		if img[i, j] == black:
+			def crawl(i, j):
+				if i<0 or i>height or j<0 or j>width: return
+				if img[i,j] == black:
+					img[i,j] = (x, y, z)
+				crawl(i+1, j)
+				crawl(i, j+1)
+				crawl(i-1, j)
+				crawl(i, j-1)
+				crawl(i+1, j+1)
+				crawl(i-1, j+1)
+				crawl(i-1, j-1)
+				crawl(i+1, j-1)
+#			while img[i, j] == black:
+#				img[i, j] = (x, y, z)
+#				j = j+1
 			if x==255: x, y = 0, 255
 			elif y==255: y, z = 0, 255
 			elif z==255: z, x = 0, 255
