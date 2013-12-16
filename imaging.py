@@ -6,9 +6,10 @@ white = (255, 255, 255)
 black = (0, 0, 0)
 
 def crawl(i, j):
-	if i<0 or i>height or j<0 or j>width: return
+	if i<0 or i>=height or j<0 or j>=width: return
 	if img[i,j] == black:
 		img[i,j] = (x, y, z)
+	else: return
 	crawl(i+1, j)
 	crawl(i, j+1)
 	crawl(i-1, j)
