@@ -32,16 +32,11 @@ for i in range(0, height):
 
 #Algorithm
 for i in range(0, width):
-	x, y, z = (random.random()*1000)%255, (random.random()*1000)%255, (random.random()*1000)%255
 	for j in range(0, height):
+		x, y, z = (random.random()*1000)%255, (random.random()*1000)%255, (random.random()*1000)%255
 		if img[i, j] == black:
 			change = (int(x), int(y), int(z))
 			crawl(i, j, change)
-
-#			while img[i, j] == black:
-#				img[i, j] = (x, y, z)
-#				j = j+1
-
 
 outputImage = outputImage.resize(size)
 outputImage.show()
