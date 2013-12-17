@@ -1,21 +1,21 @@
-import sys, Image, ImageDraw
+import sys, Image, ImageDraw, random
 
-inputImage = Image.open("img.jpg")
-
+inputImage = Image.open("regions.png")
+size = inputImage.size
+temp_size = width, height = (100, 100)
+inputImage = inputImage.resize(temp_size)
 white = (255, 255, 255)
 black = (0, 0, 0)
 
-def crawl(i, j):
+def crawl(i, j, change):
 	if i<0 or i>=width or j<0 or j>=height: return
 	if img[i,j] == black:
-		img[i,j] = (x, y, z)
-		crawl(i+1, j)
-		crawl(i, j+1)
-		crawl(i-1, j)
-		crawl(i, j-1)
+		img[i,j] = change
+		crawl(i+1, j, change)
+		crawl(i, j+1, change)
+		crawl(i-1, j, change)
+		crawl(i, j-1, change)
 
-size = width, height = inputImage.size
-x, y, z = 255, 0, 0
 
 inputImage.save("output.jpg")
 outputImage = Image.open("output.jpg")
@@ -32,18 +32,17 @@ for i in range(0, height):
 
 #Algorithm
 for i in range(0, width):
-	x, y, z = 255, 0, 0
+	x, y, z = (random.random()*1000)%255, (random.random()*1000)%255, (random.random()*1000)%255
 	for j in range(0, height):
 		if img[i, j] == black:
-			crawl(i, j)
+			change = (int(x), int(y), int(z))
+			crawl(i, j, change)
 
 #			while img[i, j] == black:
 #				img[i, j] = (x, y, z)
 #				j = j+1
-			if x==255: x, y = 0, 255
-			elif y==255: y, z = 0, 255
-			elif z==255: z, x = 0, 255
 
 
+outputImage = outputImage.resize(size)
 outputImage.show()
 outputImage.save("output.jpg")
