@@ -4,13 +4,11 @@ a = [75, 95, 64, 17, 47, 82, 18, 35, 87, 10, 20, 04, 82, 47, 65, 19, 01, 23, 75,
 
 #a = [3, 7, 4, 2, 4, 6, 8, 5, 9, 3]
 
-sumval = a[0]
-i = 1
-p = 3
+def calc(i):
+	if (2*i + 2) >= len(a): return a[i]
+	left = calc(2*i + 1)
+	right = calc(2*i + 2)
+	if left > right: return a[i] + left
+	else: return a[i] + right
 
-while i < len(a):
-	sumval = sumval + a[i]
-	i = i+p
-	p = p+1
-
-print sumval
+print calc(0)
