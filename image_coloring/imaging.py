@@ -6,7 +6,6 @@ temp_size = width, height = (100, 100)
 inputImage = inputImage.resize(temp_size)
 white = (255, 255, 255)
 black = (0, 0, 0)
-
 def crawl(i, j, change):
 	if i<0 or i>=width or j<0 or j>=height: return
 	if img[i,j] == black:
