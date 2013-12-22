@@ -8,22 +8,14 @@ import sys
 #a = [9, 6, 7, 8, 13, 5]
 #a = [3, 7, 12, 4, 5, 15, 1, 6, 9, 11, 4]
 a = [5, 4, 3, 2, 4]
-hashtab = {}
-min_num = a[0]
 min_index = 0
+max_profit = a[0] - a[min_index]
 
 for i in range(0, len(a)):
-	if a[i] < min_num:
-		min_num = a[i]
-		min_index = i
-	hashtab[(a[i], i)] = (min_num, min_index)
+	if a[i] < a[min_index]: min_index = i
+	if (a[i] - a[min_index]) > max_profit:
+		max_profit = (a[i] - a[min_index])
+		buy = min_index
+		sell = i
 
-max_num = a[0] - hashtab[(a[0], 0)][0]
-max_index = 0
-
-for i in range(0, len(a)):
-	if (a[i] - hashtab[(a[i], i)][0]) > max_num:
-		max_num = (a[i] - hashtab[(a[i], i)][0])
-		max_index = i
-
-print 'Buy on day',hashtab[(a[max_index], max_index)][1]+1,'sell on day',max_index+1
+print 'Buy on day',buy+1,'Sell on day',sell+1
