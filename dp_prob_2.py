@@ -5,25 +5,25 @@
 
 import sys
 
-a = [9, 6, 7, 8, 13, 5]
+#a = [9, 6, 7, 8, 13, 5]
+#a = [3, 7, 12, 4, 5, 15, 1, 6, 9, 11, 4]
+a = [5, 4, 3, 2, 4]
 hashtab = {}
 min_num = a[0]
 min_index = 0
-temp = {}
 
 for i in range(0, len(a)):
 	if a[i] < min_num:
 		min_num = a[i]
 		min_index = i
-	hashtab[a[i]] = (min_num, min_index)
+	hashtab[(a[i], i)] = (min_num, min_index)
 
-max_num = a[0] - hashtab[a[0]][0]
+max_num = a[0] - hashtab[(a[0], 0)][0]
 max_index = 0
 
 for i in range(0, len(a)):
-	if (a[i] - hashtab[a[i]][0]) > max_num:
-		max_num = (a[i] - hashtab[a[i]][0])
+	if (a[i] - hashtab[(a[i], i)][0]) > max_num:
+		max_num = (a[i] - hashtab[(a[i], i)][0])
 		max_index = i
-		temp[i] = (max_num, max_index)
 
-print 'Buy on day',hashtab[a[max_index]][1]+1,'sell on day',max_index+1
+print 'Buy on day',hashtab[(a[max_index], max_index)][1]+1,'sell on day',max_index+1
