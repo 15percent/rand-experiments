@@ -7,20 +7,18 @@ N = len(score)
 S = 15
 k = 4
 
-def calc(k, S):
+def calc(k, S, start):
 	hashfunc = {x:S-x for x in score}
 	if k==1 and hashfunc.has_key(S):
 		print S,
 		return 1
 	elif k==1:
 		return 0
-	for i in score:
-		if i < S:
-			score.append(i)		#appends the chosen value at the end and removes from the start, so that next call
-			score.remove(i)		#to the recursive function calls another number.
-			temp = calc(k-1, S-i)
+	for i in range(start, len(score)):
+		if score[i] < S:
+			temp = calc(k-1, S-score[i], i+1)
 			if temp==1:
-				print i,
+				print score[i],
 				return 1
 	return 0
 
@@ -28,6 +26,6 @@ def calc(k, S):
 
 
 sorted(score)
-temp = calc(k, S)
+temp = calc(k, S, 0)
 
 if temp==0: print 'No such set'
