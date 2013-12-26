@@ -15,10 +15,10 @@ int temp;
 		{
 		temp = mobster(N, demand-arr[i], i+1);
 //		if(temp == 0) return 0;
-		if(temp) {printf("%d ", arr[i]);return 1;}
+		if(temp) return 1;
 		}
 
-	else if( arr[i] == demand) {printf("%d ", arr[i]);return 1;}
+	else if( arr[i] == demand) return 1;
 
 	else if( arr[i] > demand) return 0;
 
@@ -47,8 +47,8 @@ scanf("%d", &T);
 
 		sort(arr.begin(), arr.end());
 		temp = mobster(N, demand, 0);
-		if(temp == 0) printf("= No\n");
-		else printf("= Yes\n");
+		if(temp == 0) printf("No\n");
+		else printf("Yes\n");
 	}
 
 
