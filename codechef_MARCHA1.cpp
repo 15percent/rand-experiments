@@ -36,6 +36,7 @@ scanf("%d", &T);
 	for(k=0; k<T; k++)
 	{
 		scanf("%d %d", &N, &demand);
+		if(demand == 0) {printf("Yes\n"); continue;}
 
 		arr.clear();
 		for(i=0; i<N; i++)
