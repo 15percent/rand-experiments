@@ -8,7 +8,7 @@ vector <int> arr;
 int mobster(int N, int demand, int i)
 {
 int temp;
-	while(i<N)
+	if(i<N)
 	{
 
 	if( arr[i] < demand)
@@ -36,7 +36,6 @@ scanf("%d", &T);
 	for(k=0; k<T; k++)
 	{
 		scanf("%d %d", &N, &demand);
-		if(demand == 0) {printf("Yes\n"); continue;}
 
 		arr.clear();
 		for(i=0; i<N; i++)
@@ -44,6 +43,7 @@ scanf("%d", &T);
 		scanf("%d", &temp);
 		arr.push_back(temp);
 		}
+		if(demand == 0) {printf("Yes\n"); continue;}
 
 		sort(arr.begin(), arr.end());
 		temp = mobster(N, demand, 0);
